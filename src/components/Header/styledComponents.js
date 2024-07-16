@@ -25,7 +25,7 @@ export const MenuButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-
+  z-index: 2;
   @media screen and (min-width: 1024px) {
     display: none;
   }
@@ -44,8 +44,8 @@ export const NavContainer = styled.ul`
 
 export const MobileNavContainer = styled.ul`
   position: absolute;
-  top: 40%; /* Positioned below the NavHeader */
-  right: 0; /* Positioned at the right edge */
+  top: 0%;
+  right: 0;
   background-color: #1d2537;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@ export const MobileNavContainer = styled.ul`
   padding-left: 0px;
   padding: 12px 24px;
   box-shadow: 0 0 10px #1d2537;
-  z-index: 10;
+  z-index: 1;
 `
 
 export const NavItem = styled.li`
