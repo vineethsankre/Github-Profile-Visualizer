@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import {withRouter, Link} from 'react-router-dom'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {MdClose} from 'react-icons/md'
@@ -12,7 +12,7 @@ import {
   MobileNavItem,
 } from './styledComponents'
 
-const Header = props => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {

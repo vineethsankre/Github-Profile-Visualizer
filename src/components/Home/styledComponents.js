@@ -23,12 +23,15 @@ export const HomePageHeading = styled.h1`
   font-size: 16px;
   text-align: center;
   color: #f8fafc;
-  margin-top: 20px;
+  margin-top: 16px;
   @media screen and (min-width: 1024px) {
     font-size: 32px;
   }
 `
-
+export const SearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 export const TextInputContainer = styled.form`
   background-color: #1d2537;
   display: flex;
@@ -93,8 +96,59 @@ export const ErrorMessage = styled.p`
   width: 232px;
   text-align: left;
   color: #dc2626;
+  margin-top: 4px;
+  margin-bottom: 0px;
   @media screen and (min-width: 1024px) {
     width: 458px;
-    font-size: 24px;
+    font-size: 16px;
+  }
+`
+export const LoadingViewContianer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+export const FailureViewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const FailureViewLogo = styled.img`
+  width: 296px;
+  height: 145px;
+  margin: 10px;
+  @media screen and (min-width: 1024px) {
+    width: 560px;
+    height: 274px;
+  }
+`
+
+export const FailureText = styled.h1`
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  width: 300px;
+  @media screen and (min-width: 1024px) {
+    font-size: 32px;
+    width: 500px;
+  }
+`
+
+export const TryAgainButton = styled.button`
+  background-color: #3b82f6;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 12px;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  @media screen and (min-width: 1024px) {
+    font-size: 14px;
+    padding: 12px 24px;
   }
 `
