@@ -3,11 +3,18 @@ import styled from 'styled-components'
 export const HomePageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-color: #0f172a;
   padding: 10px;
+`
+
+export const CenteredContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
 `
 
 export const HomePageHeading = styled.h1`
@@ -16,6 +23,7 @@ export const HomePageHeading = styled.h1`
   font-size: 16px;
   text-align: center;
   color: #f8fafc;
+  margin-top: 20px;
   @media screen and (min-width: 1024px) {
     font-size: 32px;
   }
@@ -26,9 +34,11 @@ export const TextInputContainer = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 272px;
+  width: 100%;
+  max-width: 522px;
   height: 32px;
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 4px;
+  margin-top: 20px;
   @media screen and (min-width: 1024px) {
     width: 522px;
     height: 36px;
@@ -52,6 +62,7 @@ export const TextInput = styled.input`
     padding: 8px 16px;
   }
 `
+
 export const SearchIconButton = styled.button`
   width: 40px;
   border: none;
@@ -66,9 +77,10 @@ export const SearchIconButton = styled.button`
     width: 48px;
   }
 `
+
 export const HomePageImage = styled.img`
-  width: 264px;
-  height: 204px;
+  width: 90%;
+  max-width: 538px;
   margin-top: 40px;
   @media screen and (min-width: 1024px) {
     width: 538px;
