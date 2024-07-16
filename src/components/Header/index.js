@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {withRouter, Link} from 'react-router-dom'
 import {GiHamburgerMenu} from 'react-icons/gi'
+import {MdClose} from 'react-icons/md'
 import {
   NavHeader,
   HeaderHeading,
@@ -23,7 +24,11 @@ const Header = props => {
       <NavHeader>
         <HeaderHeading>Github Profile Visualizer</HeaderHeading>
         <MenuButton onClick={toggleMenu}>
-          <GiHamburgerMenu size={20} color="#f8fafc" />
+          {isMenuOpen ? (
+            <MdClose size={20} color="#f8fafc" />
+          ) : (
+            <GiHamburgerMenu size={20} color="#f8fafc" />
+          )}
         </MenuButton>
         <NavContainer>
           <NavItem>
