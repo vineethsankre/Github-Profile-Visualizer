@@ -1,41 +1,25 @@
 import {Component} from 'react'
 import {BsSearch} from 'react-icons/bs'
 import cookie from 'js-cookie'
+import Header from '../Header'
 import {
   HomePageContainer,
   HomePageHeading,
   TextInputContainer,
   TextInput,
-  SearchIconContainer,
+  SearchIconButton,
   HomePageImage,
   ErrorMessage,
 } from './styledComponents'
 
-class LoginPage extends Component {
+class Home extends Component {
   state = {username: '', isUsernameInvalid: false}
 
   onChangeUsername = event => {
-    if (event.key === 'Enter') {
-      this.usernameAuthentication()
-    } else {
-      this.setState({username: event.target.value, isUsernameInvalid: false})
-    }
+    this.setState({username: event.target.value})
   }
 
-  onSuccessAuthenticate = userData => {
-    const {username} = this.state
-    const {history} = this.props
-    console.log(history)
-    const {id} = userData
-    cookie.set('awt_token', id)
-    history.replace(`/${username}/profile`)
-  }
-
-  onFailureAuthenticate = error => {
-    this.setState({isUsernameInvalid: error, username: ''})
-  }
-
-  usernameAuthentication = async () => {
+  onSubmitSearch = async () => {
     const {username} = this.state
     const url = `https://api.github.com/users/${username}`
 
@@ -43,26 +27,25 @@ class LoginPage extends Component {
 
     if (response.ok) {
       const userData = await response.json()
-      this.onSuccessAuthenticate(userData)
-    } else {
-      this.onFailureAuthenticate(true)
+      console.log(userData)
     }
   }
 
   render() {
-    const {isUsernameInvalid} = this.state
+    const {username, isUsernameInvalid} = this.state
     return (
-      <HomePageContainer>
+      <HomePageContainer onSubmit={this.onSubmitSearch}>
+        <Header />
         <TextInputContainer>
           <TextInput
-            placeholder="Enter github username"
             type="text"
-            isUsernameInvalid={isUsernameInvalid}
-            onKeyUp={this.onChangeUsername}
+            value={username}
+            placeholder="Enter github username"
+            onChange={this.onChangeUsername}
           />
-          <SearchIconContainer>
+          <SearchIconButton type="submit">
             <BsSearch />
-          </SearchIconContainer>
+          </SearchIconButton>
         </TextInputContainer>
         <ErrorMessage>
           {isUsernameInvalid && 'Enter the valid github username'}
@@ -74,4 +57,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage
+export default Home

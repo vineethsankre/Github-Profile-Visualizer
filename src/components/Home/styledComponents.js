@@ -21,7 +21,7 @@ export const HomePageHeading = styled.h1`
   }
 `
 
-export const TextInputContainer = styled.div`
+export const TextInputContainer = styled.form`
   background-color: #1d2537;
   display: flex;
   justify-content: space-between;
@@ -31,7 +31,7 @@ export const TextInputContainer = styled.div`
   border-radius: 4px 0px 0px 4px;
   @media screen and (min-width: 1024px) {
     width: 522px;
-    height: 56px;
+    height: 36px;
   }
 `
 
@@ -43,17 +43,18 @@ export const TextInput = styled.input`
   outline: none;
   height: 32px;
   width: 232px;
-  padding: 12px;
-  font-size: 12px;
+  padding: 4px 8px;
   color: #94a3b8;
   @media screen and (min-width: 1024px) {
     height: 56px;
     width: 458px;
-    font-size: 24px;
+    font-size: 16px;
+    padding: 8px 16px;
   }
 `
-export const SearchIconContainer = styled.div`
+export const SearchIconButton = styled.button`
   width: 40px;
+  border: none;
   background-color: #4f4e4c;
   color: #ffffff;
   display: flex;
@@ -62,7 +63,7 @@ export const SearchIconContainer = styled.div`
   height: 100%;
   border-radius: 0px 4px 4px 0px;
   @media screen and (min-width: 1024px) {
-    width: 64px;
+    width: 48px;
   }
 `
 export const HomePageImage = styled.img`
