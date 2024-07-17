@@ -1,22 +1,20 @@
-import {Component} from 'react'
+// src/components/Home/index.js
+
+import React, {Component, useContext} from 'react'
 import './index.css'
 import {BsSearch} from 'react-icons/bs'
 import cookie from 'js-cookie'
 import Header from '../Header'
 import LoadingView from '../LoadingView'
-
-const apiStatusConstants = {
-  initial: 'INITIAL',
-  success: 'SUCCESS',
-  failure: 'FAILURE',
-  inProgress: 'IN_PROGRESS',
-}
+import {UserContext} from '../../context/UserContext'
 
 class Home extends Component {
+  static contextType = UserContext
+
   state = {
     username: '',
     isinvalid: false,
-    apiStatus: apiStatusConstants.initial,
+    isLoading: false,
   }
 
   onChangeUsername = event => {
@@ -28,7 +26,10 @@ class Home extends Component {
     const {username} = this.state
     const {history} = this.props
     const {id} = data
+    const {setProfileData} = this.context
+    console.log(data)
     cookie.set('awt_token', id)
+    setProfileData(data)
     history.replace(`/${username}/profile`)
   }
 

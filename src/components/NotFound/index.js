@@ -1,4 +1,3 @@
-import React from 'react'
 import {Link} from 'react-router-dom'
 import './index.css'
 
@@ -15,7 +14,7 @@ const NotFound = () => (
       Please go back to the homepage.
     </p>
     <Link to="/">
-      <button className="goback-button">Go to Home</button>
+      <button type="button" className="goback-button">Go to Home</button>
     </Link>
   </div>
 )
