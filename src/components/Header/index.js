@@ -1,16 +1,8 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 import {withRouter, Link} from 'react-router-dom'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {MdClose} from 'react-icons/md'
-import {
-  NavHeader,
-  HeaderHeading,
-  MenuButton,
-  NavContainer,
-  NavItem,
-  MobileNavContainer,
-  MobileNavItem,
-} from './styledComponents'
+import './index.css'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -21,40 +13,42 @@ const Header = () => {
 
   return (
     <>
-      <NavHeader>
-        <HeaderHeading>Github Profile Visualizer</HeaderHeading>
-        <MenuButton onClick={toggleMenu}>
+      <div className="nav-header">
+        <Link to="/">
+          <p className="header-heading">Github Profile Visualizer</p>
+        </Link>
+        <button className="menu-button" onClick={toggleMenu}>
           {isMenuOpen ? (
             <MdClose size={20} color="#f8fafc" />
           ) : (
             <GiHamburgerMenu size={20} color="#f8fafc" />
           )}
-        </MenuButton>
-        <NavContainer>
-          <NavItem>
+        </button>
+        <ul className="nav-container">
+          <li className="nav-item">
             <Link to="/">Home</Link>
-          </NavItem>
-          <NavItem>
+          </li>
+          <li className="nav-item">
             <Link to="/">Repositories</Link>
-          </NavItem>
-          <NavItem>
+          </li>
+          <li className="nav-item">
             <Link to="/">Analysis</Link>
-          </NavItem>
-        </NavContainer>
+          </li>
+        </ul>
         {isMenuOpen && (
-          <MobileNavContainer>
-            <MobileNavItem>
+          <ul className="mobile-nav-container">
+            <li className="mobile-nav-item">
               <Link to="/">Home</Link>
-            </MobileNavItem>
-            <MobileNavItem>
+            </li>
+            <li className="mobile-nav-item">
               <Link to="/">Repositories</Link>
-            </MobileNavItem>
-            <MobileNavItem>
+            </li>
+            <li className="mobile-nav-item">
               <Link to="/">Analysis</Link>
-            </MobileNavItem>
-          </MobileNavContainer>
+            </li>
+          </ul>
         )}
-      </NavHeader>
+      </div>
     </>
   )
 }
