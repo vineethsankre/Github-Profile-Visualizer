@@ -1,13 +1,12 @@
-import React, {createContext, useState} from 'react'
+// src/context/UserContext.js
 
-export const UserContext = createContext()
+import React from 'react'
 
-export const UserProvider = ({children}) => {
-  const [profileData, setProfileData] = useState(null)
+const UserContext = React.createContext({
+  username: '',
+  profileDetails: {},
+  changeUsername: () => {},
+  addProfileDetails: () => {},
+})
 
-  return (
-    <UserContext.Provider value={{profileData, setProfileData}}>
-      {children}
-    </UserContext.Provider>
-  )
-}
+export default UserContext

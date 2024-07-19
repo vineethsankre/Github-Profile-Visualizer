@@ -1,36 +1,29 @@
 // src/components/Home/index.js
 
-import React, {Component, useContext} from 'react'
+import React, {Component} from 'react'
 import './index.css'
 import {BsSearch} from 'react-icons/bs'
 import cookie from 'js-cookie'
 import Header from '../Header'
 import LoadingView from '../LoadingView'
-import {UserContext} from '../../context/UserContext'
+import UserContext from '../../context/UserContext'
 
 class Home extends Component {
   static contextType = UserContext
 
   state = {
-    username: '',
     isinvalid: false,
     isLoading: false,
   }
 
-  onChangeUsername = event => {
-    this.setState({username: event.target.value})
-  }
-
   onSuccessAuthentication = data => {
     this.setState({isLoading: false, isinvalid: false})
-    const {username} = this.state
     const {history} = this.props
-    const {id} = data
-    const {setProfileData} = this.context
-    console.log(data)
-    cookie.set('awt_token', id)
-    setProfileData(data)
-    history.replace(`/${username}/profile`)
+    const {changeUsername, addProfileDetails} = this.context
+    changeUsername(data.login)
+    addProfileDetails(data)
+    cookie.set('auth_token', data.id)
+    history.replace(`/${data.login}/profile`)
   }
 
   tryAgain = () => {
@@ -60,9 +53,9 @@ class Home extends Component {
   onSubmitSearch = async event => {
     event.preventDefault()
     this.setState({isLoading: true})
-    const {username} = this.state
+    const {username} = this.context
     try {
-      const url = `https://api.github.com/users/${username}`
+      const url = `https://apis2.ccbp.in/gpv/profile-details/${username}?api_key=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`
       const response = await fetch(url)
       if (response.ok) {
         const userData = await response.json()
@@ -76,50 +69,51 @@ class Home extends Component {
   }
 
   render() {
-    const {username, isinvalid, isLoading} = this.state
+    const {username, changeUsername} = this.context
+    const {isinvalid, isLoading} = this.state
+
     return (
       <div className="home-page-container">
-        {isLoading ? (
-          this.renderLoadingView()
-        ) : (
-          <>
-            <Header />
-            <div className="centered-content">
-              <div className="search-container">
-                <form
-                  className="text-input-container"
-                  onSubmit={this.onSubmitSearch}
-                >
-                  <input
-                    type="text"
-                    className="text-input"
-                    value={username}
-                    placeholder="Enter GitHub username"
-                    onChange={this.onChangeUsername}
-                    style={{borderColor: isinvalid ? 'red' : 'initial'}}
-                  />
-                  <button className="search-icon-button" type="submit">
-                    <BsSearch />
-                  </button>
-                </form>
-                {isinvalid && (
-                  <p className="error-message">Enter a valid GitHub username</p>
-                )}
-              </div>
-              <h1 className="home-page-heading">GitHub Profile Visualizer</h1>
+        <Header />
+        <div className="centered-content">
+          <div className="search-container">
+            <form
+              className="text-input-container"
+              onSubmit={this.onSubmitSearch}
+            >
+              <input
+                type="text"
+                className="text-input"
+                value={username}
+                placeholder="Enter GitHub username"
+                onChange={e => changeUsername(e.target.value)}
+                style={{borderColor: isinvalid ? 'red' : 'initial'}}
+              />
+              <button className="search-icon-button" type="submit">
+                <BsSearch />
+              </button>
+            </form>
+            {isinvalid && (
+              <p className="error-message">Enter a valid GitHub username</p>
+            )}
+          </div>
+          <h1 className="home-page-heading">GitHub Profile Visualizer</h1>
+          {isLoading ? (
+            this.renderLoadingView()
+          ) : (
+            <>
               {isinvalid ? (
                 this.renderFailureView()
               ) : (
-                <>
-                  <img
-                    className="home-page-image"
-                    src="https://res.cloudinary.com/dfxtnqgcz/image/upload/v1721058054/Group_2_1x_y0vqqa.png"
-                  />
-                </>
+                <img
+                  className="home-page-image"
+                  src="https://res.cloudinary.com/dfxtnqgcz/image/upload/v1721058054/Group_2_1x_y0vqqa.png"
+                  alt="gitHub profile visualizer home page"
+                />
               )}
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
     )
   }
