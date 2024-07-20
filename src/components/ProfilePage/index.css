@@ -72,3 +72,103 @@
     width: 48px;
   }
 }
+
+.avatar-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+}
+@media screen and (min-width: 1024px) {
+  .avatar-image {
+    width: 187px;
+    height: 187px;
+    border-radius: 96px;
+  }
+}
+
+.user-name {
+  color: #f8fafc;
+  font-family: 'Roboto';
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+@media screen and (min-width: 1024px) {
+  .user-name {
+    font-size: 48px;
+    line-height: 63px;
+  }
+}
+.bio {
+  color: #f8fafc;
+  font-family: 'Roboto';
+  font-size: 14px;
+  line-height: 24px;
+}
+@media screen and (min-width: 1024px) {
+  .bio {
+    font-size: 18px;
+    line-height: 32px;
+  }
+}
+.user-info-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 36px;
+}
+.userstats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: 10px;
+  text-align: center;
+}
+.stat-number {
+  color: #3b82f6;
+  font-family: 'Roboto';
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0px;
+}
+@media screen and (min-width: 1024px) {
+  .stat-number {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+.stat {
+  color: #f8fafc;
+  font-family: 'Roboto';
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  margin: 0px;
+}
+@media screen and (min-width: 1024px) {
+  .stat {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+.divider {
+  border: 1px solid #64748b;
+  height: 75px;
+}
+
+.user-about {
+  color: #3b82f6;
+  font-family: 'Roboto';
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+}
+.user-about-value {
+  color: #f8fafc;
+  font-family: 'Roboto';
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+}

@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react'
 import './index.css'
-import {BsSearch} from 'react-icons/bs'
+import {HiOutlineSearch} from 'react-icons/hi'
 import cookie from 'js-cookie'
 import Header from '../Header'
 import LoadingView from '../LoadingView'
@@ -55,7 +55,7 @@ class Home extends Component {
     this.setState({isLoading: true})
     const {username} = this.context
     try {
-      const url = `https://apis2.ccbp.in/gpv/profile-details/${username}?api_key=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`
+      const url = `https://apis2.ccbp.in/gpv/profile-details/${username}`
       const response = await fetch(url)
       if (response.ok) {
         const userData = await response.json()
@@ -82,15 +82,19 @@ class Home extends Component {
               onSubmit={this.onSubmitSearch}
             >
               <input
-                type="text"
+                type="search"
                 className="text-input"
                 value={username}
                 placeholder="Enter GitHub username"
                 onChange={e => changeUsername(e.target.value)}
                 style={{borderColor: isinvalid ? 'red' : 'initial'}}
               />
-              <button className="search-icon-button" type="submit">
-                <BsSearch />
+              <button
+                data-testid="searchButton"
+                className="search-icon-button"
+                type="submit"
+              >
+                <HiOutlineSearch />
               </button>
             </form>
             {isinvalid && (
@@ -108,7 +112,7 @@ class Home extends Component {
                 <img
                   className="home-page-image"
                   src="https://res.cloudinary.com/dfxtnqgcz/image/upload/v1721058054/Group_2_1x_y0vqqa.png"
-                  alt="gitHub profile visualizer home page"
+                  alt="github profile visualizer home page"
                 />
               )}
             </>
